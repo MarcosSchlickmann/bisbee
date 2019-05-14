@@ -4,4 +4,4 @@ from app.models import User, Role
 from flask_migrate import Migrate
 
 app = create_app()
-# migrate = Migrate(app, db)
+migrate = Migrate(app, db)
