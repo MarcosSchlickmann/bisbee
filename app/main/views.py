@@ -61,10 +61,8 @@ def edit_user(id):
     form = EditUserForm(user)
     
     if form.validate_on_submit():
-        edit_user = User()
-        edit_user.username = form.username.data
-        edit_user.role_id = form.role.data
-        db.session.add(edit_user)
+        user.username = form.username.data
+        user.role_id = form.role.data
         db.session.commit()
 
         flash('Função cadastrada com sucesso.')
