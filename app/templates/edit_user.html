@@ -4,7 +4,15 @@
 
 {% block page_content %}
     <h1>Editar Usuário</h1>
-    {{ wtf.quick_form(form) }}
+
+    {% if not form.username and show_user %}
+    	<b>Nome: </b> {{ show_user.username }}<br>
+	{% endif %}
+    {% if not form.profile_id and show_user_role %}
+    	<b>Role: </b> {{ show_user_role.name }}
+    {% else %}
+    	{{ wtf.quick_form(form) }}
+    {% endif %}
 {% endblock %}
 
 

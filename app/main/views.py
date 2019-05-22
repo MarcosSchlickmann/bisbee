@@ -57,19 +57,21 @@ def edit_user(id):
     logged_user = User.query.filter_by(id=current_user.id).first()
     logged_user_role = Role.query.filter_by(id=logged_user.role_id).first()
 
-    user = User.query.filter_by(id=id).first()
-    form = EditUserForm(user)
+    edit_user = User.query.filter_by(id=id).first()
+    edit_user_role = Role.query.filter_by(id=edit_user.role_id).first()
+    form = EditUserForm(edit_user)
     
     if form.validate_on_submit():
-        user.username = form.username.data
-        user.role_id = form.role.data
+        edit_user.username = form.username.data
+        edit_user.role_id = form.role.data
         db.session.commit()
 
         flash('Função cadastrada com sucesso.')
         return redirect(url_for('main.index'))
 
     if logged_user_role.name != "Administrador":
-        del form.username
         del form.role
+    if logged_user.id != edit_user.id:
+        del form.username
 
-    return render_template('edit_user.html', form=form)
+    return render_template('edit_user.html', form=form, show_user=edit_user, show_user_role=edit_user_role)
