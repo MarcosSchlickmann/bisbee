@@ -2,14 +2,29 @@
 
 {% block page_content %}
     <h1>Listagem de Usuários</h1>
-    <ul>
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Usuario</th>
+            <th scope="col">Nome Completo</th>
+            <th scope="col">Função</th>
+            <th scope="col"></th>
+        </tr>
+        </thead>
+        <tbody>
         {% for user in users %}
-            <li> 
-                <a href="/edit-user/{{ user.id}}">
-                {{ user.username }} - {{ user.role.name }}
-                </a>
-            </li>
+            <tr>
+                <th scope="row">{{ user.id }}</th>
+                <td><a href="/user/{{ user.username }}">{{ user.username }}</a></td>
+                <td>{{ user.name }}</td>
+                <td>{{ user.role.name }}</td>
+                <td></td>
+            </tr>
         {% endfor %}
+        </tbody>
+    </table>
+    <ul>
         
     </ul>
 {% endblock %}

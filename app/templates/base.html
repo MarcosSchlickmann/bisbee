@@ -20,27 +20,30 @@
                 <ul class="nav navbar-nav">
                     <li>
                         <a href="/">Home</a>
+                        {% if current_user.is_authenticated %}
+                            <li>
+                                <a href="{{ url_for('main.add_role') }}">Roles</a>
+                            </li>
+                            <li>
+                                <a href="{{ url_for('main.list_user') }}">Users</a>
+                            </li>
+                        {% endif %}
                     </li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     {% if current_user.is_authenticated %}
-                        <li>
-                            <a href="{{ url_for('main.add_role') }}">Roles</a>
-
-                            <a href="{{ url_for('main.list_user') }}">Users</a>
-
-                            <a href="{{ url_for('auth.logout') }}">
-                                Log out
-                            </a>
-                        </li>
+                    <li>
+                        <a href="{{ url_for('auth.logout') }}">
+                            Log out
+                        </a>
+                    </li>
                     {% else %}
-                        <li>
-                            <a href="{{ url_for("auth.login") }}">
-                                Log in
-                            </a>
-                        </li>
+                    <li>
+                        <a href="{{ url_for("auth.login") }}">
+                            Log in
+                        </a>
+                    </li>
                     {% endif %}
-                    
                 </ul>
             </div>
         </div>

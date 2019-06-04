@@ -22,7 +22,7 @@ class RegistrationForm(FlaskForm):
             raise ValidationError("Usuário já registrado.")
 
 
-
+        
 class LoginForm(FlaskForm):
     username = StringField('User', validators=[
         DataRequired()

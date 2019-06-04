@@ -3,6 +3,7 @@ from flask_login import login_required, login_user, logout_user
 
 from app.auth.forms import RegistrationForm
 from app.models import User
+from app.models import Role
 from app import db
 
 from . import auth
@@ -15,7 +16,8 @@ def register():
     if form.validate_on_submit():
         user = User(
             username=form.username.data,
-            password=form.password.data
+            password=form.password.data,
+            role=Role.query.get(2)
         )
         db.session.add(user)
         db.session.commit()
