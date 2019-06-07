@@ -7,7 +7,7 @@ from app.decorators import admin_required, permission_required
 from app.main.forms import (
     EditProfileAdminForm, EditProfileForm, NameForm,RoleForm
 )
-from app.models import Role, User
+from app.models import Role, User, Permission
 
 from . import main
 
@@ -41,6 +41,7 @@ def list_user():
 
 @main.route('/role/add', methods=['GET', 'POST'])
 @login_required
+@admin_required
 def add_role():
     form = RoleForm()
     roles = Role.query.all()
