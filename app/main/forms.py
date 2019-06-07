@@ -1,6 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, SubmitField, ValidationError, SelectField,\
-    TextAreaField
+from wtforms import StringField, SubmitField, ValidationError, SelectField, TextAreaField, BooleanField
 from wtforms.validators import DataRequired, Length
 
 from app.models import Role, User
@@ -46,6 +45,11 @@ class RoleForm(FlaskForm):
     name = StringField('Função', validators=[
         DataRequired()
     ])
+    follow_permission = BooleanField()
+    comment_permission = BooleanField()
+    write_permission = BooleanField()
+    moderate_permission = BooleanField()
+    admin_permission = BooleanField()
     submit = SubmitField('Cadastrar')
 
     def validate_name(self, field):

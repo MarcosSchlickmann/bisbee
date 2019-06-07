@@ -48,6 +48,7 @@ def add_role():
     if form.validate_on_submit():
         new_role = Role()
         new_role.name = form.name.data
+        new_role.permissions = + form.follow_permission.data + form.comment_permission.data + form.write_permission.data + form.moderate_permission.data + form.admin_permission.data
         db.session.add(new_role)
         db.session.commit()
 
