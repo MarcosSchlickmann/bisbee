@@ -41,7 +41,6 @@ def list_user():
 
 @main.route('/role/add', methods=['GET', 'POST'])
 @login_required
-@admin_required
 def add_role():
     form = RoleForm()
     roles = Role.query.all()

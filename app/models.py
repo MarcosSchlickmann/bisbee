@@ -1,5 +1,3 @@
-from enum import Enum
-
 from flask_login import UserMixin
 from werkzeug.security import check_password_hash, generate_password_hash
 
@@ -8,7 +6,7 @@ from app import db
 from . import login_manager
 
 
-class Permission(Enum):
+class Permission():
     FOLLOW = 1
     COMMENT = 2
     WRITE = 4
